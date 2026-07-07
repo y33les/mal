@@ -1,2 +1,4 @@
 * text=auto eol=lf
 impls/vbs/*.vbs text eol=crlf
+impls/limbo/*.b linguist-language=Limbo
+impls/limbo/*.m linguist-language=Limbo
