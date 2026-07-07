@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+MALDIR=$(dirname $0)
+exec $MALDIR/emu -r$MALDIR ${STEP:-step0_mal}.dis "${@}"

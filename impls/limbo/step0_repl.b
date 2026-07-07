@@ -1,0 +1,25 @@
+implement MAL;
+
+include "sys.m";
+
+    sys: Sys;
+
+include "draw.m";
+
+MAL: module
+
+{
+
+    init:   fn(ctxt: ref Draw->Context, args: list of string);
+
+};
+
+init(ctxt: ref Draw->Context, args: list of string)
+
+{
+
+    sys = load Sys Sys->PATH;
+
+    sys->print("hello, world\n");
+
+}
