@@ -24,6 +24,8 @@ old
 tmp/
 .xslt_mal_history
 zig-cache/
-# Inferno emulator and libraries required for Limbo version
+# Inferno emulator and libraries required for Limbo version, as well
+# as compiled Limbo modules
 impls/limbo/emu  
 impls/limbo/dis/
+impls/limbo/*.dis
