@@ -1,12 +1,3 @@
-# Vim swapfiles
-impls/limbo/*.swp
-
-# Inferno emulator and libraries required for Limbo version, as well
-# as compiled Limbo modules
-impls/limbo/emu  
-impls/limbo/dis/
-impls/limbo/*.dis
-
 .DS_Store
 .bash_history
 .cache

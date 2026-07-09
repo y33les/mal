@@ -1,0 +1,8 @@
+# Vim swapfiles
+*.swp
+
+# Inferno emulator and libraries required for Limbo version, as well
+# as compiled Limbo modules
+emu  
+dis/
+*.dis
