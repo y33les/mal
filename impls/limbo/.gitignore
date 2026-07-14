@@ -6,3 +6,6 @@
 emu  
 dis/
 *.dis
+
+# Don't ignore step* subdirs for this implementation
+!step?_*/
