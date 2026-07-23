@@ -4,6 +4,7 @@ all: $(steps)
 
 clean:
 	find step*/ -iname "*.dis" -exec rm -v {} \;
+	find step*/ -iname "*.sbl" -exec rm -v {} \;
 
 $(steps): clean
 	cd $@ && \

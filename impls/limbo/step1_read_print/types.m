@@ -1,8 +1,17 @@
-Types: module
+MalTypes: module
 {
-	init: fn(ctxt: ref Draw->Context, args: list of string);
+	init: fn();
 	MalType: adt
 	{
-		# TODO
+		pick
+		{
+			Int => i: int;
+			Real => r: real;
+			String => s: string;
+		}
+		describe: fn(c: self ref MalType): string;
 	};
+	mkint: fn(val: int): ref MalType;
+	mkreal: fn(val: real): ref MalType;
+	mkstring: fn(val: string): ref MalType;
 };
