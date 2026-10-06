@@ -8,7 +8,7 @@ Reader: module
 	#	next: fn(r: self ref Reader): str;
 	#	peek: fn(r: self ref Reader): str;
 	#};
-	tokenise: fn(str: string);#: list of string;
+	tokenise: fn(str: string): list of string;
 	#read_str: fn(str: string): ref Reader;
 	#read_form: fn(r: Reader): ref MalType;
 	#read_list: fn(r: Reader): ref MalType;
