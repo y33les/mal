@@ -20,12 +20,13 @@ init(nil: ref Draw->Context, nil: list of string)
 	maltypes = load MalTypes "types.dis";
 	maltypes->init();
 	#tokenise("(+ 1 2 3 4)");
-	out := tokenise("aaaa aaa aa a\n");
+	out := tokenise("aaaa xyzzy 2 234 ab12cd # b&#c (fnord aaa) {aa aa} [a a a 2 # ]\n");
 	printing: do
 	{
-		sys->print("%s\n", hd out);
+		sys->print("%s, ", hd out);
 		out = tl out;
 	} while (out != nil);
+	sys->print("\n");
 	exit;
 }
 
@@ -33,7 +34,12 @@ tokenise(str: string): list of string
 {
 	# kanaka's original mal regex:
         # [\s,]*(~@|[\[\]{}()'`~^@]|"(?:\\.|[^\\"])*"?|;.*|[^\s\[\]{}('"`,;)]*)
-	(mal_re, nil) := regex->compile("[ \t\n\r]*(a*)", 1);
+	# Stages of reimplementing each section of the regex:
+	#mal_regexp := "[ \t\n\r\v\f]*(~@|[\\[\\]{}\\(\\)'`~\\^@]|a*)"; # Whitespace and ~@
+	#mal_regexp := "[ \t\n\r\v\f]*(\"(\\\\.|[^\\\"])*\"?|a*)";      # Special characters
+	#mal_regexp := "[ \t\n\r\v\f]*(;.*|a*)";                        # Quoted strings
+	mal_regexp := "[ \t\n\r\v\f]*(a*|[^ \t\n\r\v\f\\[\\]{}\\('\"`.;\\)]*)"; # FIXME: sequences of non-special characters
+	(mal_re, nil) := regex->compile(mal_regexp, 1);
 	match: array of (int, int);
 	match_start := 0;
 	match_end := 0;
