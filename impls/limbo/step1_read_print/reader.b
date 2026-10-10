@@ -20,14 +20,33 @@ init(nil: ref Draw->Context, nil: list of string)
 	maltypes = load MalTypes "types.dis";
 	maltypes->init();
 	#out := tokenise("(+ 1 2 3 4)");
-	out := tokenise("aaaa xyzzy 2 234 ab12cd # b&#c (fnord aaa) {aa aa} [a a a 2 # ]\n");
+	#out := tokenise("aaaa xyzzy 2 234 ab12cd # b&#c (fnord aaa) {aa aa} [a a a 2 # ]\n");
+	r := read_str("(+ 1 2 3 4)\n");
 	printing: do
 	{
-		sys->print("%s, ", hd out);
-		out = tl out;
+		out = r.next();
+		sys->print("%s, ", out);
 	} while (out != nil);
 	sys->print("\n");
 	exit;
+}
+
+Reader.next(r: self ref Reader): str
+{
+	return r.tokens[r.pos++];
+}
+
+Reader.peek(r: self ref Reader): str
+{
+	return r.tokens[r.pos];
+}
+
+read_str(str: string): ref Reader
+{
+	r: Reader;
+	r.tokens = tokenise(str);
+	r.pos = 0;
+	return r;
 }
 
 tokenise(str: string): list of string
